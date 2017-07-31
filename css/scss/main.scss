@@ -1,0 +1,102 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../../ds/fonts/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Sans Pro';
+  src: url('../../ds/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
+}
+
+//@import url('https://fonts.googleapis.com/css?family=Lato|Source+Sans+Pro');
+
+//variables
+$primaryText: #182153;
+
+
+
+body {
+
+}
+
+h1, h2, h3, h4, h5 {
+   font-family: 'Lato', sans-serif;
+}
+
+p, a {
+    font-family: 'Sans Pro', sans-serif;
+}
+
+
+
+nav {
+    // display: flex;
+    height: 100%;
+    width: 100%;
+    display:table;
+    
+    a {
+        display:table-cell;
+        vertical-align:middle; 
+        text-align: center;
+        color: $primaryText;
+    }
+}
+
+.outline {
+    border: 1px solid red;
+}
+
+.outlineBlue {
+    border: 1px solid blue;
+}
+
+header {
+    position: fixed;
+    left: 0; 
+    right: 0;
+    top: 0;
+    background: white;
+    color: $primaryText;
+    z-index: 6;
+}
+
+#businessCard {
+    background-color: white;
+    opacity: none;
+    padding: 0;
+
+    h1, h2, h3, h4, h5, p {
+        color: $primaryText;
+    }
+
+    .side {
+        float: left;
+        width: 50%;
+    }
+
+    .side:nth-child(1){
+        img {
+            width: 100%;
+        }
+    }
+
+    .side:nth-child(2){
+        padding: 2em;
+    }
+
+    
+}
+
+#slide1 {
+    background:url('../img/coding.jpg') 50% 0 no-repeat fixed;
+    color: #fff;
+    height: 80%;
+    margin: 0;
+    padding: 125px 0 0 0;
+    background-size: cover;
+    opacity : 0.9;
+}
+
