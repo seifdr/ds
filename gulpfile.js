@@ -4,10 +4,23 @@ var compass		= require('gulp-compass');
 var concat		= require('gulp-concat');
 var babel 		= require('gulp-babel');
 var rename 		= require('gulp-rename');
+var plumber 	= require('gulp-plumber');
+//gulp-notify to show a nice growl life notifications upon error
+var notify 		= require('gulp-notify');
 
 var browserSync = require('browser-sync');
 var reload  	= browserSync.reload;
 
+//Here is a handy plumber setting that we will use when an error occurs in any of the tasks
+var plumberErrorHandler = { errorHandler: notify.onError({
+ 
+    title: 'Gulp',
+ 
+    message: 'Error: <%= error.message %>'
+ 
+  })
+ 
+};
 
 //compile sass
 gulp.task('sass', function(){
@@ -33,7 +46,9 @@ gulp.task('sass', function(){
 gulp.task('js', function(){
 
 	var needScripts = [
-		'js/src/*.js'
+		'./js/vendor/jquery-3.2.1.min.js',
+		'./js/vendor/slick.min.js',
+		'./js/src/*.js'
 		// 'js/src/tether.min.js',
 		// 'js/src/jquery-3.2.1.min.js',
 		// 'js/src/bootstrap.min.js',
@@ -45,7 +60,8 @@ gulp.task('js', function(){
 	gulp.src( needScripts )
 			// .pipe( babel( {
            	// 	presets: ['es2015']
-        	// }))
+			// }))
+			.pipe( plumber( plumberErrorHandler ) )
 			.pipe( concat('main.js') )
 			.pipe( gulp.dest('js') )
 			.pipe( reload({stream:true}) );
@@ -63,8 +79,8 @@ gulp.task('browser-sync', function() {
     //initialize browsersync
     browserSync.init(files, {
 	    //browsersync with a php server
-	    proxy: "http://localhost:8888/ds/",
-		//proxy: "http://localhost/ws/", 
+	    //proxy: "http://localhost:8888/ds/",
+		proxy: "http://localhost/ds/", 
 	    notify: false
     });
 });

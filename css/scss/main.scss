@@ -1,4 +1,6 @@
 @import '../../node_modules/bootstrap/scss/bootstrap';
+@import './vendor/slick.scss';
+@import './vendor/slick-theme.scss';
 
 @font-face {
   font-family: 'Lato';
@@ -18,7 +20,7 @@ $primaryText: #182153;
 
 
 body {
-
+    background-color: grey;
 }
 
 h1, h2, h3, h4, h5 {
@@ -100,3 +102,19 @@ header {
     opacity : 0.9;
 }
 
+#slide3 {
+    padding: 0 6em;
+    margin: 2em 0;
+    width: 100%;
+}
+
+#slide4{
+    background:  linear-gradient(
+                     rgba(20,20,20, .5), 
+                     rgba(20,20,20, .5)
+                ), url(../img/marquette-general-campus-1200x675.jpg) 50% 0 no-repeat fixed;
+    color: #fff;
+    height: 600px;
+    padding: 170px 0 0 0;
+    background-size: cover; 
+}
